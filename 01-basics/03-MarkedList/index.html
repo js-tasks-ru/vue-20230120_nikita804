@@ -22,7 +22,7 @@
           <li 
           v-for="email in emails"
           :key="email"
-          :class="{'marked': inputValue.length > 0 && email.toLowerCase().includes(inputValue)}"
+          :class="{'marked': markedClass(email)}"
           >{{email}}</li>
         </ul>
       </div>

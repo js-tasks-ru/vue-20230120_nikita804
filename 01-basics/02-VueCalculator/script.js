@@ -10,8 +10,13 @@ const App = defineComponent({
                 input1: 0,
                 input2: 0,
             },
-            result: 0,
             operation: '',
+        }
+    },
+
+    computed:{
+        result(){
+            return this.calculate()
         }
     },
 
@@ -27,26 +32,6 @@ const App = defineComponent({
                 return (this.inputs.input1 / this.inputs.input2)
             }
         }
-    },
-
-    watch:{
-
-        inputs: {
-            immediate: true,
-            deep: true,
-            handler(){
-                this.result = this.calculate()
-            }
-        },
-
-        operation: {
-            immediate: true,
-            deep: true,
-            handler(){
-                this.result = this.calculate()
-            }
-        },
-
     },
 
 });

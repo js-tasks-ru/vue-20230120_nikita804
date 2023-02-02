@@ -40,6 +40,12 @@ const App = defineComponent({
         }
     },
 
+    methods:{
+        markedClass(item) {
+            return this.inputValue.length > 0 && item.toLowerCase().includes(this.inputValue)
+          }
+    },
+      
 });
 
 const app = createApp(App);
