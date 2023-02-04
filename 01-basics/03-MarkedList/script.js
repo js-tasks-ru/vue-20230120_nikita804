@@ -40,11 +40,21 @@ const App = defineComponent({
         }
     },
 
-    methods:{
-        markedClass(item) {
-            return this.inputValue.length > 0 && item.toLowerCase().includes(this.inputValue)
-          }
+    // methods:{
+    //     markedClass(item) {
+    //         return this.inputValue.length > 0 && item.toLowerCase().includes(this.inputValue)
+    //       }
+    // },
+
+    computed: {
+        processedEmails() {
+            return this.emails.map(email => ({
+              email,
+              marked: this.inputValue.length > 0 && email.toLowerCase().includes(this.inputValue.toLowerCase())
+            }));
+        }
     },
+    
       
 });
 
