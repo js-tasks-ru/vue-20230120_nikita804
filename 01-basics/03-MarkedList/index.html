@@ -20,10 +20,10 @@
         </div>
         <ul>
           <li 
-          v-for="email in emails"
-          :key="email"
-          :class="{'marked': markedClass(email)}"
-          >{{email}}</li>
+          v-for="item in processedEmails"
+          :key="item.email"
+          :class="{'marked': item.marked}"
+          >{{item.email}}</li>
         </ul>
       </div>
     </div>
