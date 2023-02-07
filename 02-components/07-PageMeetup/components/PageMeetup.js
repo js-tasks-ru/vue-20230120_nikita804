@@ -41,7 +41,6 @@ watch:{
           this.loading = false;
         })
         .catch((error) => {
-          // this.loading = false;
           this.meetupError = error;
         });
     }
