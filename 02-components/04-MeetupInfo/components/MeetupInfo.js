@@ -22,8 +22,14 @@ export default defineComponent({
     formattedDate() {
       const date = new Date(this.date);
       const options = { day: 'numeric', month: 'long', year: 'numeric' };
-      return date.toLocaleDateString('ru-RU', options);
+      return date.toLocaleDateString('en-EN', options);
     },
+
+    testDate(){
+      const date = new Date(this.date);
+      // const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      return date.toISOString().substr(0, 10);
+    }
   },
 
   template: `
@@ -38,7 +44,7 @@ export default defineComponent({
       </li>
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
-        <time datetime="2020-01-01">{{formattedDate}}</time>
+        <time :datetime=testDate>{{formattedDate}}</time>
       </li>
     </ul>`,
 });
