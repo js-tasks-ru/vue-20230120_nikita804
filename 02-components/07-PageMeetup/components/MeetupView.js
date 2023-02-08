@@ -29,9 +29,6 @@ export default defineComponent({
     description() {
       return this.meetup.description;
     },
-    isAgenda(){
-      return this.meetup.agenda ? 'display: none' : '';
-    },
   },
 
   template: `
@@ -43,9 +40,12 @@ export default defineComponent({
             <h3>Описание</h3>
             <MeetupDescription :description="description" />
             <h3>Программа</h3>
-            <MeetupAgenda :agenda="meetup.agenda" />
+            <MeetupAgenda
+            v-if="this.meetup.agenda.length !== 0" 
+            :agenda="meetup.agenda" 
+            />
             <UiAlert 
-            :style="isAgenda"
+            v-if="this.meetup.agenda.length === 0"
             >Программа пока пуста...</UiAlert>
           </div>
           <div class="meetup__aside">
