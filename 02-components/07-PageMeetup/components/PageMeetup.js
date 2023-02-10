@@ -22,7 +22,7 @@ export default defineComponent({
 
   data(){
     return {
-        meetupData: {},
+        meetupData: null,
         loading: true,
         meetupError: '',
     }
@@ -31,7 +31,6 @@ export default defineComponent({
 watch:{
   meetupId: {
     immediate: true,
-    deep: true,
     handler(){
       this.loading = true;
       this.meetupError = '';
@@ -54,14 +53,16 @@ watch:{
       :meetup="meetupData"
       v-if="!loading"
       />
-      <UiContainer>
+      <UiContainer
+      v-if="loading && !meetupError">
         <UiAlert 
         v-if="loading && !meetupError">
         Загрузка...
         </UiAlert>
       </UiContainer>
 
-      <UiContainer>
+      <UiContainer
+      v-if="meetupError">
         <UiAlert 
         v-if="meetupError">
         {{ meetupError }}

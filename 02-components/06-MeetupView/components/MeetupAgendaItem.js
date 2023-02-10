@@ -18,20 +18,7 @@ export default defineComponent({
 
     title(){
       return this.agendaItem.title ? this.agendaItem.title : agendaItemDefaultTitles[this.agendaItem.type];
-    },
-
-    isTalkType(){
-      return (this.agendaItem.type !== 'talk') 
-      ? 'display: none;'
-      : '';
-    },
-
-    isDiscption(){
-      return this.agendaItem.description 
-      ? '' 
-      : 'display: none;';
-    },
-    
+    },    
   },
 
   template: `
@@ -39,21 +26,21 @@ export default defineComponent({
       <div class="agenda-item__col">
         <img :src=icon class="icon" alt="key" />
       </div>
-      <div class="agenda-item__col">{{agendaItem.startsAt}} - {{agendaItem.endsAt}}</div>
+      <div class="agenda-item__col">{{ agendaItem.startsAt }} - {{ agendaItem.endsAt }}</div>
       <div class="agenda-item__col">
         <h3 class="agenda-item__title">{{title}}</h3>
         <p 
         class="agenda-item__talk"
-        :style="isTalkType"
+        v-if="agendaItem.type === 'talk'"
         >
-          <span>{{agendaItem.speaker}}</span>
+          <span>{{ agendaItem.speaker }}</span>
           <span class="agenda-item__dot"></span>
-          <span class="agenda-item__lang">{{agendaItem.language}}</span>
+          <span class="agenda-item__lang">{{ agendaItem.language }}</span>
         </p>
         <p
-        :style="isDiscption"
+        v-if="agendaItem.description"
         >
-        {{agendaItem.description}}
+        {{ agendaItem.description }}
         </p>
       </div>
     </div>`,

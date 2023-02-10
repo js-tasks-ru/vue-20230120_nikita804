@@ -22,12 +22,11 @@ export default defineComponent({
     formattedDate() {
       const date = new Date(this.date);
       const options = { day: 'numeric', month: 'long', year: 'numeric' };
-      return date.toLocaleDateString('en-EN', options);
+      return date.toLocaleDateString(navigator.language, options);
     },
 
     testDate(){
       const date = new Date(this.date);
-      // const options = { day: 'numeric', month: 'long', year: 'numeric' };
       return date.toISOString().substr(0, 10);
     }
   },
@@ -36,15 +35,15 @@ export default defineComponent({
     <ul class="meetup-info">
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-user.svg" />
-        {{organizer}}
+        {{ organizer }}
       </li>
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-map.svg" />
-        {{place}}
+        {{ place }}
       </li>
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
-        <time :datetime=testDate>{{formattedDate}}</time>
+        <time :datetime=testDate>{{ formattedDate }}</time>
       </li>
     </ul>`,
 });
