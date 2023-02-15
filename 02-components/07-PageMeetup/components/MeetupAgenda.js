@@ -17,7 +17,8 @@ export default defineComponent({
 
   template: `
     <ul class="agenda">
-    <li class="agenda__item" v-for="item in agenda" :key="item.id">
+      <li class="agenda__item" v-for="item in agenda" :key="item.id">
         <MeetupAgendaItem :agenda-item="item" />
+      </li>
     </ul>`,
 });
